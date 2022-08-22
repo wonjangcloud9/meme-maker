@@ -1,3 +1,11 @@
-* {
-  background-color: thistle;
+canvas {
+  width: 800px;
+  height: 800px;
+  border: 2px solid black;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
