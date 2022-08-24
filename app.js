@@ -3,33 +3,34 @@ const ctx = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 800;
 ctx.lineWidth = 2;
-
-const colors = [
-  "red",
-  "blue",
-  "green",
-  "yellow",
-  "orange",
-  "purple",
-  "pink",
-  "black",
-  "brown",
-  "grey",
-  "white",
-  "cyan",
-  "magenta",
-  "lime",
-  "gold",
-  "silver",
-];
-
-function onClick(event) {
-  ctx.beginPath();
-  ctx.moveTo(0, 0);
-  const color = colors[Math.floor(Math.random() * colors.length)];
-  ctx.strokeStyle = color;
-  ctx.lineTo(event.offsetX, event.offsetY);
-  ctx.stroke();
+let isPainting = false;
+function onMove(e) {
+  if (!isPainting) {
+    ctx.moveTo(e.offsetX, e.offsetY);
+  } else {
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+  }
+}
+function onMouseDown() {
+  isPainting = true;
 }
 
-canvas.addEventListener("mousemove", onClick);
+function onMouseUp() {
+  isPainting = false;
+}
+
+function cancelPainting() {
+  isPainting = false;
+}
+
+canvas.addEventListener("mousemove", onMove);
+canvas.addEventListener("mousedown", onMouseDown);
+canvas.addEventListener("mouseup", onMouseUp);
+canvas.addEventListener("mouseleave", cancelPainting);
+
+const init = document.getElementById("init");
+init.addEventListener("click", () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.beginPath();
+});
