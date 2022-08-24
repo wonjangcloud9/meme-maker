@@ -34,3 +34,9 @@ init.addEventListener("click", () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.beginPath();
 });
+
+const lineWidth = document.getElementById("line-width");
+lineWidth.addEventListener("change", (e) => {
+  ctx.lineWidth = e.target.value;
+  ctx.beginPath();
+});

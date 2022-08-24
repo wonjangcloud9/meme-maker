@@ -10,3 +10,12 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+#init {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 5px 30px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
