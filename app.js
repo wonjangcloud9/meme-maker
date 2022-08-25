@@ -40,3 +40,9 @@ lineWidth.addEventListener("change", (e) => {
   ctx.lineWidth = e.target.value;
   ctx.beginPath();
 });
+
+const color = document.getElementById("color");
+color.addEventListener("change", (e) => {
+  ctx.strokeStyle = e.target.value;
+  ctx.beginPath();
+});
